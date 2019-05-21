@@ -179,10 +179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2d2a1a6287d4546b7c90e300b40e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpriteToRedraw: {fileID: 21300000, guid: 6f4703b3c85174943a1f51ba9fd83466, type: 3}
+  SpriteToRedraw: {fileID: 21300000, guid: c301c0238534f0244ac6a87d9beb36b1, type: 3}
   Cube: {fileID: 8612858334540270418, guid: 191898f0e87081943bd564ea9bac8546, type: 3}
   TargetMaterial: {fileID: 2100000, guid: ceab9e36c54e9dd4b8cf4e8e363c3b6d, type: 2}
   Handler: {fileID: 36223111}
+  Greys: 
 --- !u!4 &854143115
 Transform:
   m_ObjectHideFlags: 0

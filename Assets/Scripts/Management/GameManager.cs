@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Management
@@ -13,12 +14,14 @@ namespace Management
         private int Height;
         private int Width;
         public GameObject Handler;
+        public List<int> Greys = new List<int>();
         void Start()
         {
             targetTexture = SpriteToRedraw.texture;
             Height = targetTexture.height;
             Width = targetTexture.width;
             GenerateCube(Width, Height);
+            
         }
         
         public void GenerateCube(int XValue, int YValue)
@@ -47,11 +50,18 @@ namespace Management
         {
             objToSetup.GetComponent<Renderer>().material = mat;
             objToSetup.GetComponent<Renderer>().material.color = text.GetPixel(x, y);
-            if (!reverse)
-                objToSetup.transform.position += new Vector3(0, 0,
-                    (Mathf.Round(targetTexture.GetPixel(x, y).a * 10) / alphaStep) + spacing);
-            else objToSetup.transform.position -= new Vector3(0, 0,
-                (Mathf.Round(targetTexture.GetPixel(x, y).a * 10) / alphaStep) + spacing);
+            Color32 colorValue = text.GetPixel(x, y);
+            int greyR = 255 - colorValue.r;
+            int greyG = 255 - colorValue.g;
+            int greyB = 255 - colorValue.b;
+            int greyA = 255 - colorValue.a;
+            int offset = (greyR + greyG + greyB + greyA) / 40;
+            if (!reverse) objToSetup.transform.position += new Vector3(0, 0,offset);
+            else objToSetup.transform.position -= new Vector3(0, 0,offset);
+            Greys.Add(offset);
         }
+        
+        
+        
     }
 }
